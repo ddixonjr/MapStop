@@ -8,9 +8,11 @@
 
 #import "MapStopMainViewController.h"
 #import "StopsMap.h"
+#import "StopDetailTableViewController.h"
 
 #define kDefaultCity @"Chicago, IL"
 #define kStopPinAnnotationReuseID @"StopPinAnnotationView"
+#define kInvalidValue -1;
 
 @interface MapStopMainViewController () <MKMapViewDelegate>
 
@@ -44,7 +46,7 @@
         CLPlacemark *firstPlacemark = [placemarks objectAtIndex:0];
         MKCoordinateSpan span = MKCoordinateSpanMake(0.4,0.4);
         MKCoordinateRegion region = MKCoordinateRegionMake(firstPlacemark.location.coordinate,span);
-        [self.stopsMapView setRegion:region];
+        [self.stopsMapView setRegion:region animated:YES];
     }];
 }
 
@@ -69,7 +71,7 @@
     pin.canShowCallout = YES;
     pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     pin.tag = [self.stopAnnotationsArray indexOfObject:annotation];
-    NSLog(@"pin tag %d",pin.tag);
+//    NSLog(@"pin tag %d",pin.tag);
     return pin;
 }
 
@@ -78,6 +80,7 @@
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
     NSLog(@"selected view has tag %d", view.tag);
+    [self performSegueWithIdentifier:@"StopDetailSegue" sender:view];
 }
 
 
@@ -87,4 +90,32 @@
 }
 
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"StopDetailSegue"])
+    {
+        NSInteger stopIndex = kInvalidValue;
+        if ([sender isKindOfClass:[MKPinAnnotationView class]])
+        {
+            MKPinAnnotationView *stopPinAnnotationView = (MKPinAnnotationView *) sender;
+            stopIndex = stopPinAnnotationView.tag;
+            StopDetailTableViewController *stopDetailVC = segue.destinationViewController;
+            stopDetailVC.stopName = [self.stopsMap nameForStopAtIndex:stopIndex];
+            stopDetailVC.stopID = [self.stopsMap idForStopAtIndex:stopIndex];
+//            stopDetailVC.stopAddress = [self.stopsMap addressForStopAtIndex:stopIndex];
+            stopDetailVC.stopRoutes = [self.stopsMap routesForStopAtIndex:stopIndex];
+            stopDetailVC.stopIntermodalTransfers = [self.stopsMap intermodalsForStopAtIndex:stopIndex];
+            stopDetailVC.stopPointAnnotation = [self.stopAnnotationsArray objectAtIndex:stopIndex];
+        }
+    }
+
+}
+
 @end
+
+
+
+
+
+
+

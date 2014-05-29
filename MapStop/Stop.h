@@ -12,10 +12,12 @@
 @interface Stop : NSObject
 
 @property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *address;
 @property (strong, nonatomic) NSString *stopID;
 @property (strong, nonatomic) NSString *urlString;
-@property (strong, nonatomic) NSString *routeString;
-@property (strong, nonatomic) NSString *directionString;
+@property (strong, nonatomic) NSString *routes;
+@property (strong, nonatomic) NSString *direction;
+@property (strong, nonatomic) NSString *intermodalTransfers;
 @property (assign, readonly, nonatomic) CLLocationCoordinate2D coordinate;
 @property (strong, nonatomic) UIImage *image;
 

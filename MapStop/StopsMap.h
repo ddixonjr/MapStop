@@ -15,10 +15,12 @@
 
 - (NSInteger)numberOfStopsInMap;
 - (NSString *)nameForStopAtIndex:(NSInteger)stopIndex;
+- (NSString *)addressForStopAtIndex:(NSInteger)stopIndex;
 - (NSString *)idForStopAtIndex:(NSInteger)stopIndex;
 - (NSString *)directionForStopAtIndex:(NSInteger)stopIndex;
 - (NSString *)routesForStopAtIndex:(NSInteger)stopIndex;
 - (NSString *)urlStringForStopAtIndex:(NSInteger)stopIndex;
+- (NSString *)intermodalsForStopAtIndex:(NSInteger)stopIndex;
 - (CLLocationCoordinate2D)coordinateForStopAtIndex:(NSInteger)stopIndex;
 - (UIImage *)imageForStopAtIndex:(NSInteger)stopIndex;
 

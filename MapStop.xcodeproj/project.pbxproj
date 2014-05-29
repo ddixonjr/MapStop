@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95205E081936FEB900876FF7 /* StopDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95205E071936FEB900876FF7 /* StopDetailTableViewController.m */; };
+		95205E0C19370EB800876FF7 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95205E0B19370EB800876FF7 /* AddressBookUI.framework */; };
 		95555B14193676D300EB4608 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95555B13193676D300EB4608 /* Foundation.framework */; };
 		95555B16193676D300EB4608 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95555B15193676D300EB4608 /* CoreGraphics.framework */; };
 		95555B18193676D300EB4608 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95555B17193676D300EB4608 /* UIKit.framework */; };
@@ -38,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		95205E061936FEB900876FF7 /* StopDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopDetailTableViewController.h; sourceTree = "<group>"; };
+		95205E071936FEB900876FF7 /* StopDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopDetailTableViewController.m; sourceTree = "<group>"; };
+		95205E0919370E5E00876FF7 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		95205E0B19370EB800876FF7 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		95555B10193676D300EB4608 /* MapStop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapStop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95555B13193676D300EB4608 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		95555B15193676D300EB4608 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -70,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95205E0C19370EB800876FF7 /* AddressBookUI.framework in Frameworks */,
 				95555B521936C94500EB4608 /* CheckMate.framework in Frameworks */,
 				95555B4D193680FF00EB4608 /* MapKit.framework in Frameworks */,
 				95555B16193676D300EB4608 /* CoreGraphics.framework in Frameworks */,
@@ -91,6 +98,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		95205E011936EC0700876FF7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				95555B28193676D300EB4608 /* MapStopMainViewController.h */,
+				95555B29193676D300EB4608 /* MapStopMainViewController.m */,
+				95205E061936FEB900876FF7 /* StopDetailTableViewController.h */,
+				95205E071936FEB900876FF7 /* StopDetailTableViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		95205E021936EC2300876FF7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				95555B25193676D300EB4608 /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		95555B07193676D300EB4608 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +139,8 @@
 		95555B12193676D300EB4608 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				95205E0B19370EB800876FF7 /* AddressBookUI.framework */,
+				95205E0919370E5E00876FF7 /* AddressBook.framework */,
 				95555B511936C94500EB4608 /* CheckMate.framework */,
 				95555B4C193680FF00EB4608 /* MapKit.framework */,
 				95555B13193676D300EB4608 /* Foundation.framework */,
@@ -128,10 +156,9 @@
 			children = (
 				95555B22193676D300EB4608 /* AppDelegate.h */,
 				95555B23193676D300EB4608 /* AppDelegate.m */,
-				95555B25193676D300EB4608 /* Main.storyboard */,
-				95555B28193676D300EB4608 /* MapStopMainViewController.h */,
-				95555B29193676D300EB4608 /* MapStopMainViewController.m */,
 				95555B4B193677AA00EB4608 /* Model */,
+				95205E021936EC2300876FF7 /* View */,
+				95205E011936EC0700876FF7 /* Controller */,
 				95555B2B193676D300EB4608 /* Images.xcassets */,
 				95555B1A193676D300EB4608 /* Supporting Files */,
 			);
@@ -276,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95555B501936978000EB4608 /* Stop.m in Sources */,
+				95205E081936FEB900876FF7 /* StopDetailTableViewController.m in Sources */,
 				95555B4A1936779F00EB4608 /* StopsMap.m in Sources */,
 				95555B2A193676D300EB4608 /* MapStopMainViewController.m in Sources */,
 				95555B24193676D300EB4608 /* AppDelegate.m in Sources */,
@@ -492,6 +520,7 @@
 				95555B44193676D300EB4608 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		95555B45193676D300EB4608 /* Build configuration list for PBXNativeTarget "MapStopTests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +529,7 @@
 				95555B47193676D300EB4608 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

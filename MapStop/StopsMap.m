@@ -8,6 +8,7 @@
 
 #import "StopsMap.h"
 #import "Stop.h"
+#import <AddressBookUI/AddressBookUI.h>
 
 #define kDefaultStopSetURLString @"https://s3.amazonaws.com/mobile-makers-lib/bus.json"
 
@@ -48,6 +49,27 @@
     return stopAtIndex.name;
 }
 
+
+- (NSString *)addressForStopAtIndex:(NSInteger)stopIndex
+{
+    Stop *stopAtIndex = [self.stopSetArray objectAtIndex:stopIndex];
+    CLLocation *stopLocation = [[CLLocation alloc] initWithCoordinate:stopAtIndex.coordinate
+                                                             altitude:0.0
+                                                   horizontalAccuracy:50.0
+                                                     verticalAccuracy:50.0
+                                                            timestamp:nil];
+    __block NSString *addressString = @"Address not found";
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:stopLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        NSDictionary *firstAddressDictionary = [placemarks objectAtIndex:0];
+        addressString =  ABCreateStringWithAddressDictionary(firstAddressDictionary, NO);
+    }];
+
+    NSLog(@"address string reverse geocoded is %@", addressString);
+    return addressString;
+}
+
+
 - (NSString *)idForStopAtIndex:(NSInteger)stopIndex
 {
     Stop *stopAtIndex = [self.stopSetArray objectAtIndex:stopIndex];
@@ -58,14 +80,14 @@
 - (NSString *)directionForStopAtIndex:(NSInteger)stopIndex;
 {
     Stop *stopAtIndex = [self.stopSetArray objectAtIndex:stopIndex];
-    return stopAtIndex.directionString;
+    return stopAtIndex.direction;
 }
 
 
 - (NSString *)routesForStopAtIndex:(NSInteger)stopIndex;
 {
     Stop *stopAtIndex = [self.stopSetArray objectAtIndex:stopIndex];
-    return stopAtIndex.routeString;
+    return stopAtIndex.routes;
 }
 
 
@@ -73,6 +95,13 @@
 {
     Stop *stopAtIndex = [self.stopSetArray objectAtIndex:stopIndex];
     return stopAtIndex.urlString;
+}
+
+
+- (NSString *)intermodalsForStopAtIndex:(NSInteger)stopIndex;
+{
+    Stop *stopAtIndex = [self.stopSetArray objectAtIndex:stopIndex];
+    return (stopAtIndex.intermodalTransfers != nil) ? stopAtIndex.intermodalTransfers : @"None";
 }
 
 
@@ -115,11 +144,11 @@
     {
         Stop *curStop = [[Stop alloc] initWithLatitude:[[curStopDictionary objectForKey:@"latitude"] doubleValue]
                                           andLongitude:[[curStopDictionary objectForKey:@"longitude"] doubleValue]];
-
+        // load everything static but derive address from the latitude and longitude in the API method only when called
         curStop.name = [curStopDictionary objectForKey:@"cta_stop_name"];
         curStop.stopID = [curStopDictionary objectForKey:@"stop_id"];
-        curStop.directionString = [curStopDictionary objectForKey:@"direction"];
-        curStop.routeString = [curStopDictionary objectForKey:@"routes"];
+        curStop.direction = [curStopDictionary objectForKey:@"direction"];
+        curStop.routes = [curStopDictionary objectForKey:@"routes"];
         curStop.urlString = [curStopDictionary objectForKey:@"_address"];
         [self.stopSetArray addObject:curStop];
     }
