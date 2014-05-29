@@ -102,10 +102,15 @@
             StopDetailTableViewController *stopDetailVC = segue.destinationViewController;
             stopDetailVC.stopName = [self.stopsMap nameForStopAtIndex:stopIndex];
             stopDetailVC.stopID = [self.stopsMap idForStopAtIndex:stopIndex];
-//            stopDetailVC.stopAddress = [self.stopsMap addressForStopAtIndex:stopIndex];
             stopDetailVC.stopRoutes = [self.stopsMap routesForStopAtIndex:stopIndex];
             stopDetailVC.stopIntermodalTransfers = [self.stopsMap intermodalsForStopAtIndex:stopIndex];
             stopDetailVC.stopPointAnnotation = [self.stopAnnotationsArray objectAtIndex:stopIndex];
+            // have the StopsMap object reverse geocode the address and store it in the current Stop object
+            // for the StopDetail view controller to grab after the completion block finishes
+            [[self.stopsMap stopForStopAtIndex:stopIndex]  addObserver:stopDetailVC forKeyPath:@"address" options:NSKeyValueObservingOptionNew context:NULL];
+
+            [self.stopsMap loadAddressForStopAtIndex:stopIndex];
+            stopDetailVC.curStopIndex = stopIndex;
         }
     }
 

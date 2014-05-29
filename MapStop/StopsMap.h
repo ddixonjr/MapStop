@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import "Stop.h"
+
 
 @interface StopsMap : NSObject
 
@@ -15,13 +17,16 @@
 
 - (NSInteger)numberOfStopsInMap;
 - (NSString *)nameForStopAtIndex:(NSInteger)stopIndex;
+- (void)loadAddressForStopAtIndex:(NSInteger)stopIndex;
 - (NSString *)addressForStopAtIndex:(NSInteger)stopIndex;
 - (NSString *)idForStopAtIndex:(NSInteger)stopIndex;
 - (NSString *)directionForStopAtIndex:(NSInteger)stopIndex;
 - (NSString *)routesForStopAtIndex:(NSInteger)stopIndex;
 - (NSString *)urlStringForStopAtIndex:(NSInteger)stopIndex;
 - (NSString *)intermodalsForStopAtIndex:(NSInteger)stopIndex;
+- (Stop *)stopForStopAtIndex:(NSInteger)stopIndex;
 - (CLLocationCoordinate2D)coordinateForStopAtIndex:(NSInteger)stopIndex;
 - (UIImage *)imageForStopAtIndex:(NSInteger)stopIndex;
+
 
 @end

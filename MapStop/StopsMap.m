@@ -50,7 +50,7 @@
 }
 
 
-- (NSString *)addressForStopAtIndex:(NSInteger)stopIndex
+- (void)loadAddressForStopAtIndex:(NSInteger)stopIndex
 {
     Stop *stopAtIndex = [self.stopSetArray objectAtIndex:stopIndex];
     CLLocation *stopLocation = [[CLLocation alloc] initWithCoordinate:stopAtIndex.coordinate
@@ -58,15 +58,20 @@
                                                    horizontalAccuracy:50.0
                                                      verticalAccuracy:50.0
                                                             timestamp:nil];
-    __block NSString *addressString = @"Address not found";
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     [geocoder reverseGeocodeLocation:stopLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-        NSDictionary *firstAddressDictionary = [placemarks objectAtIndex:0];
-        addressString =  ABCreateStringWithAddressDictionary(firstAddressDictionary, NO);
+        CLPlacemark *firstPlacemark = placemarks[0];
+        NSDictionary *firstPlacemarkDictionary = firstPlacemark.addressDictionary;
+        stopAtIndex.address =  ABCreateStringWithAddressDictionary(firstPlacemarkDictionary, NO);
+        NSLog(@"stop address retrieved: %@", stopAtIndex.address);
     }];
+}
 
-    NSLog(@"address string reverse geocoded is %@", addressString);
-    return addressString;
+
+- (NSString *)addressForStopAtIndex:(NSInteger)stopIndex
+{
+    Stop *stopAtIndex = [self.stopSetArray objectAtIndex:stopIndex];
+    return stopAtIndex.address;
 }
 
 
@@ -102,6 +107,12 @@
 {
     Stop *stopAtIndex = [self.stopSetArray objectAtIndex:stopIndex];
     return (stopAtIndex.intermodalTransfers != nil) ? stopAtIndex.intermodalTransfers : @"None";
+}
+
+
+- (Stop *)stopForStopAtIndex:(NSInteger)stopIndex
+{
+    return [self.stopSetArray objectAtIndex:stopIndex];
 }
 
 

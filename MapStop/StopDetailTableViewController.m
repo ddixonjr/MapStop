@@ -32,11 +32,17 @@
 - (void)populateStopTableView
 {
     self.stopNameCell.detailTextLabel.text = self.stopName;
-    self.stopAddressCell.detailTextLabel.text = self.stopAddress;
     self.stopRoutesCell.detailTextLabel.text = self.stopRoutes;
     self.stopIntermodalCell.detailTextLabel.text = self.stopIntermodalTransfers;
+    self.stopAddress = [self.stopsMap addressForStopAtIndex:self.curStopIndex];
+
 }
 
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    self.stopAddressCell.detailTextLabel.text = [change objectForKey:NSKeyValueChangeNewKey];
+    NSLog(@"address %@",self.stopAddressCell.detailTextLabel.text);
+}
 
 - (void)populateStopMapView
 {

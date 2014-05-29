@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "StopsMap.h"
 
 
 @interface StopDetailTableViewController : UITableViewController
@@ -18,5 +19,7 @@
 @property (strong, nonatomic) NSString *stopRoutes;
 @property (strong, nonatomic) NSString *stopIntermodalTransfers;
 @property (strong, nonatomic) MKPointAnnotation *stopPointAnnotation;
+@property (assign, nonatomic) NSInteger curStopIndex;
+@property (strong, nonatomic) StopsMap *stopsMap;
 
 @end
