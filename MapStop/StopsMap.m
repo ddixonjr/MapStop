@@ -62,7 +62,11 @@
     [geocoder reverseGeocodeLocation:stopLocation completionHandler:^(NSArray *placemarks, NSError *error) {
         CLPlacemark *firstPlacemark = placemarks[0];
         NSDictionary *firstPlacemarkDictionary = firstPlacemark.addressDictionary;
-        stopAtIndex.address =  ABCreateStringWithAddressDictionary(firstPlacemarkDictionary, NO);
+        if (firstPlacemarkDictionary != nil)
+            stopAtIndex.address =  ABCreateStringWithAddressDictionary(firstPlacemarkDictionary, NO);
+        else
+            stopAtIndex.address = @"Address not found";
+
         NSLog(@"stop address retrieved: %@", stopAtIndex.address);
     }];
 }

@@ -9,6 +9,8 @@
 #import "MapStopMainViewController.h"
 #import "StopsMap.h"
 #import "StopDetailTableViewController.h"
+#import <MapKit/MapKit.h>
+
 
 #define kDefaultCity @"Chicago, IL"
 #define kStopPinAnnotationReuseID @"StopPinAnnotationView"
