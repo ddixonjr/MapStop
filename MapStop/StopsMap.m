@@ -60,14 +60,21 @@
                                                             timestamp:nil];
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     [geocoder reverseGeocodeLocation:stopLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-        CLPlacemark *firstPlacemark = placemarks[0];
-        NSDictionary *firstPlacemarkDictionary = firstPlacemark.addressDictionary;
-        if (firstPlacemarkDictionary != nil)
-            stopAtIndex.address =  ABCreateStringWithAddressDictionary(firstPlacemarkDictionary, NO);
-        else
-            stopAtIndex.address = @"Address not found";
+        if (!error)
+        {
+            CLPlacemark *firstPlacemark = [placemarks firstObject];
+            NSDictionary *firstPlacemarkDictionary = firstPlacemark.addressDictionary;
+            if (firstPlacemarkDictionary != nil)
+                stopAtIndex.address =  ABCreateStringWithAddressDictionary(firstPlacemarkDictionary, NO);
+            else
+                stopAtIndex.address = @"Address not found";
 
-        NSLog(@"stop address retrieved: %@", stopAtIndex.address);
+            NSLog(@"stop address retrieved: %@", stopAtIndex.address);
+        }
+        else
+        {
+            NSLog(@"Error in loadAddressForStopAtIndex: - %@",error.localizedDescription);
+        }
     }];
 }
 

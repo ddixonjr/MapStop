@@ -45,10 +45,13 @@
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     [geocoder geocodeAddressString:kDefaultCity completionHandler:^(NSArray *placemarks, NSError *error)
     {
-        CLPlacemark *firstPlacemark = [placemarks objectAtIndex:0];
-        MKCoordinateSpan span = MKCoordinateSpanMake(0.4,0.4);
-        MKCoordinateRegion region = MKCoordinateRegionMake(firstPlacemark.location.coordinate,span);
-        [self.stopsMapView setRegion:region animated:YES];
+        if (!error)
+        {
+            CLPlacemark *firstPlacemark = [placemarks objectAtIndex:0];
+            MKCoordinateSpan span = MKCoordinateSpanMake(0.4,0.4);
+            MKCoordinateRegion region = MKCoordinateRegionMake(firstPlacemark.location.coordinate,span);
+            [self.stopsMapView setRegion:region animated:YES];
+        }
     }];
 }
 
