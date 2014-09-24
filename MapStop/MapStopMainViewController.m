@@ -15,6 +15,7 @@
 #define kDefaultCity @"Chicago, IL"
 #define kStopPinAnnotationReuseID @"StopPinAnnotationView"
 #define kInvalidValue -1;
+#define kDebugOn NO
 
 @interface MapStopMainViewController () <MKMapViewDelegate>
 
@@ -76,7 +77,7 @@
     pin.canShowCallout = YES;
     pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     pin.tag = [self.stopAnnotationsArray indexOfObject:annotation];
-//    NSLog(@"pin tag %d",pin.tag);
+    if (kDebugOn)  NSLog(@"pin tag %d",pin.tag);
     return pin;
 }
 
@@ -84,7 +85,7 @@
 
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
-    NSLog(@"selected view has tag %d", view.tag);
+    if (kDebugOn) NSLog(@"selected view has tag %d", view.tag);
     [self performSegueWithIdentifier:@"StopDetailSegue" sender:view];
 }
 

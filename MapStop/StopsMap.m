@@ -11,6 +11,7 @@
 #import <AddressBookUI/AddressBookUI.h>
 
 #define kDefaultStopSetURLString @"https://s3.amazonaws.com/mobile-makers-lib/bus.json"
+#define kDebugOn NO
 
 @interface StopsMap ()
 
@@ -69,11 +70,11 @@
             else
                 stopAtIndex.address = @"Address not found";
 
-            NSLog(@"stop address retrieved: %@", stopAtIndex.address);
+            if (kDebugOn) NSLog(@"stop address retrieved: %@", stopAtIndex.address);
         }
         else
         {
-            NSLog(@"Error in loadAddressForStopAtIndex: - %@",error.localizedDescription);
+            if (kDebugOn) NSLog(@"Error in loadAddressForStopAtIndex: - %@",error.localizedDescription);
         }
     }];
 }
@@ -155,7 +156,7 @@
         NSDictionary *stopSetDictionary = [NSJSONSerialization JSONObjectWithData:stopSetData options:NSJSONReadingAllowFragments  error:&error];
         NSArray *rawStopSetArray = [stopSetDictionary objectForKey:@"row"];
         [self buildStopSetModelFromRawStopSetArray:rawStopSetArray];
-        NSLog(@"stopSetArray has the following %@",self.stopSetArray);
+        if (kDebugOn) NSLog(@"stopSetArray has the following %@",self.stopSetArray);
     }
 }
 

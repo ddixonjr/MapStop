@@ -8,6 +8,8 @@
 
 #import "StopDetailTableViewController.h"
 
+#define kDebugOn NO
+
 @interface StopDetailTableViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *stopNameCell;
@@ -41,7 +43,7 @@
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     self.stopAddressCell.detailTextLabel.text = [change objectForKey:NSKeyValueChangeNewKey];
-    NSLog(@"address %@",self.stopAddressCell.detailTextLabel.text);
+    if (kDebugOn) NSLog(@"address %@",self.stopAddressCell.detailTextLabel.text);
 }
 
 - (void)populateStopMapView

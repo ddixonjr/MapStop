@@ -26,7 +26,6 @@
 		95555B4A1936779F00EB4608 /* StopsMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 95555B491936779F00EB4608 /* StopsMap.m */; };
 		95555B4D193680FF00EB4608 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95555B4C193680FF00EB4608 /* MapKit.framework */; };
 		95555B501936978000EB4608 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = 95555B4F1936978000EB4608 /* Stop.m */; };
-		95555B521936C94500EB4608 /* CheckMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95555B511936C94500EB4608 /* CheckMate.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +67,6 @@
 		95555B4C193680FF00EB4608 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		95555B4E1936978000EB4608 /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
 		95555B4F1936978000EB4608 /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
-		95555B511936C94500EB4608 /* CheckMate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CheckMate.framework; path = ../../../../Downloads/CheckMate.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +75,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				95205E0C19370EB800876FF7 /* AddressBookUI.framework in Frameworks */,
-				95555B521936C94500EB4608 /* CheckMate.framework in Frameworks */,
 				95555B4D193680FF00EB4608 /* MapKit.framework in Frameworks */,
 				95555B16193676D300EB4608 /* CoreGraphics.framework in Frameworks */,
 				95555B18193676D300EB4608 /* UIKit.framework in Frameworks */,
@@ -141,7 +138,6 @@
 			children = (
 				95205E0B19370EB800876FF7 /* AddressBookUI.framework */,
 				95205E0919370E5E00876FF7 /* AddressBook.framework */,
-				95555B511936C94500EB4608 /* CheckMate.framework */,
 				95555B4C193680FF00EB4608 /* MapKit.framework */,
 				95555B13193676D300EB4608 /* Foundation.framework */,
 				95555B15193676D300EB4608 /* CoreGraphics.framework */,
@@ -432,6 +428,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Dennis/Downloads,
@@ -449,6 +446,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Dennis/Downloads,
