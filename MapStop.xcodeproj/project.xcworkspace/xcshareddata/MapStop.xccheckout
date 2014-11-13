@@ -10,29 +10,29 @@
 	<string>MapStop</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>E525B464-70DD-4B73-9ACF-CE3C4082878B</key>
+		<key>F26C5F8CBD1085C3031DFFA0CB2DBCF84CAC8703</key>
 		<string>https://github.com/ddixonjr/MapStop.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>MapStop.xcodeproj/project.xcworkspace</string>
+	<string>MapStop.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>E525B464-70DD-4B73-9ACF-CE3C4082878B</key>
+		<key>F26C5F8CBD1085C3031DFFA0CB2DBCF84CAC8703</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/ddixonjr/MapStop.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>E525B464-70DD-4B73-9ACF-CE3C4082878B</string>
+	<string>F26C5F8CBD1085C3031DFFA0CB2DBCF84CAC8703</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>E525B464-70DD-4B73-9ACF-CE3C4082878B</string>
+			<string>F26C5F8CBD1085C3031DFFA0CB2DBCF84CAC8703</string>
 			<key>IDESourceControlWCCName</key>
 			<string>MapStop</string>
 		</dict>

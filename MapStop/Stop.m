@@ -7,6 +7,8 @@
 //
 
 #import "Stop.h"
+#import <AddressBookUI/AddressBookUI.h>
+
 
 @interface Stop ()
 
@@ -34,6 +36,32 @@
     return self;
 }
 
+
+- (NSString *)intermodalTransfers
+{
+    return (_intermodalTransfers) ? _intermodalTransfers : @"No Intermodal Transfers";
+}
+
+- (void)fetchAddressWithCompletionHandler:(void (^)(NSString *address, NSError *error))completion
+{
+    dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+    dispatch_async(backgroundQueue,^{
+        CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+        CLLocation *stopLocation = [[CLLocation alloc] initWithLatitude:self.coordinate.latitude longitude:self.coordinate.longitude];
+        [geocoder reverseGeocodeLocation:stopLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+            if (!error && placemarks.count)
+            {
+                CLPlacemark *firstPlacemark = [placemarks firstObject];
+                NSString *address = ABCreateStringWithAddressDictionary(firstPlacemark.addressDictionary, NO);
+                completion(address,nil);
+            }
+            else
+            {
+                completion(nil,error);
+            }
+        }];
+    });
+}
 
 
 @end

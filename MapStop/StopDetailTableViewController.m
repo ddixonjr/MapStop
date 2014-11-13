@@ -9,12 +9,16 @@
 #import "StopDetailTableViewController.h"
 
 #define kDebugOn NO
+#define kDefaultCoordinateSpanLat 0.01
+#define kDefaultCoordinateSpanLon 0.01
+#define kErrorAddressNotFoundString @"Unable to determine address"
 
-@interface StopDetailTableViewController ()
+@interface StopDetailTableViewController () <MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *stopNameCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *stopAddressCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *stopRoutesCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *stopDirectionCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *stopIntermodalCell;
 @property (weak, nonatomic) IBOutlet MKMapView *stopMapView;
 
@@ -22,36 +26,63 @@
 
 @implementation StopDetailTableViewController
 
+#pragma mark - View Life Cycle and Initializaton Methods
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = [NSString stringWithFormat:@"Stop %@",self.stopID];
+    self.title = [NSString stringWithFormat:@"Stop %@",self.selectedStop.stopID];
     [self populateStopTableView];
     [self populateStopMapView];
 
 }
 
+
 - (void)populateStopTableView
 {
-    self.stopNameCell.detailTextLabel.text = self.stopName;
-    self.stopRoutesCell.detailTextLabel.text = self.stopRoutes;
-    self.stopIntermodalCell.detailTextLabel.text = self.stopIntermodalTransfers;
-    self.stopAddress = [self.stopsMap addressForStopAtIndex:self.curStopIndex];
-
+    self.stopAddressCell.detailTextLabel.text = @"Determining Address...";
+    self.stopNameCell.detailTextLabel.text = self.selectedStop.name;
+    self.stopRoutesCell.detailTextLabel.text = self.selectedStop.routes;
+    self.stopDirectionCell.detailTextLabel.text = self.selectedStop.direction;
+    self.stopIntermodalCell.detailTextLabel.text = self.selectedStop.intermodalTransfers;
+    [self.selectedStop fetchAddressWithCompletionHandler:^(NSString *address, NSError *error) {
+        if (!error)
+        {
+            self.stopAddressCell.detailTextLabel.text = (address.length) ? address : kErrorAddressNotFoundString;
+        }
+        else
+        {
+            self.stopAddressCell.detailTextLabel.text = kErrorAddressNotFoundString;
+        }
+    }];
 }
 
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    self.stopAddressCell.detailTextLabel.text = [change objectForKey:NSKeyValueChangeNewKey];
-    if (kDebugOn) NSLog(@"address %@",self.stopAddressCell.detailTextLabel.text);
-}
 
 - (void)populateStopMapView
 {
-    MKCoordinateSpan stopSpan = MKCoordinateSpanMake(0.01,0.01);
-    MKCoordinateRegion stopRegion = MKCoordinateRegionMake(self.stopPointAnnotation.coordinate, stopSpan);
-    [self.stopMapView addAnnotation:self.stopPointAnnotation];
+    MKPointAnnotation *stopPointAnnotation = [[MKPointAnnotation alloc] init];
+    stopPointAnnotation.title = self.selectedStop.name;
+    stopPointAnnotation.coordinate = self.selectedStop.coordinate;
+    stopPointAnnotation.subtitle = self.selectedStop.routes;
+
+    self.stopMapView.delegate = self;
+
+    MKCoordinateSpan stopSpan = MKCoordinateSpanMake(kDefaultCoordinateSpanLat,kDefaultCoordinateSpanLon);
+    MKCoordinateRegion stopRegion = MKCoordinateRegionMake(stopPointAnnotation.coordinate, stopSpan);
+    [self.stopMapView addAnnotation:stopPointAnnotation];
     [self.stopMapView setRegion:stopRegion animated:YES];
 }
+
+#pragma mark - MKMapViewDelegate Methods
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"DetailStopAnnotationID"];
+    pin.canShowCallout = NO;
+
+    return pin;
+}
+
+
 
 @end

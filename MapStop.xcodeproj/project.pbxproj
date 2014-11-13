@@ -23,7 +23,7 @@
 		95555B35193676D300EB4608 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95555B17193676D300EB4608 /* UIKit.framework */; };
 		95555B3D193676D300EB4608 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95555B3B193676D300EB4608 /* InfoPlist.strings */; };
 		95555B3F193676D300EB4608 /* MapStopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 95555B3E193676D300EB4608 /* MapStopTests.m */; };
-		95555B4A1936779F00EB4608 /* StopsMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 95555B491936779F00EB4608 /* StopsMap.m */; };
+		95555B4A1936779F00EB4608 /* StopsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 95555B491936779F00EB4608 /* StopsService.m */; };
 		95555B4D193680FF00EB4608 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95555B4C193680FF00EB4608 /* MapKit.framework */; };
 		95555B501936978000EB4608 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = 95555B4F1936978000EB4608 /* Stop.m */; };
 /* End PBXBuildFile section */
@@ -62,8 +62,8 @@
 		95555B3A193676D300EB4608 /* MapStopTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MapStopTests-Info.plist"; sourceTree = "<group>"; };
 		95555B3C193676D300EB4608 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		95555B3E193676D300EB4608 /* MapStopTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapStopTests.m; sourceTree = "<group>"; };
-		95555B481936779F00EB4608 /* StopsMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopsMap.h; sourceTree = "<group>"; };
-		95555B491936779F00EB4608 /* StopsMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopsMap.m; sourceTree = "<group>"; };
+		95555B481936779F00EB4608 /* StopsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopsService.h; sourceTree = "<group>"; };
+		95555B491936779F00EB4608 /* StopsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopsService.m; sourceTree = "<group>"; };
 		95555B4C193680FF00EB4608 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		95555B4E1936978000EB4608 /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
 		95555B4F1936978000EB4608 /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
@@ -195,8 +195,8 @@
 			children = (
 				95555B4E1936978000EB4608 /* Stop.h */,
 				95555B4F1936978000EB4608 /* Stop.m */,
-				95555B481936779F00EB4608 /* StopsMap.h */,
-				95555B491936779F00EB4608 /* StopsMap.m */,
+				95555B481936779F00EB4608 /* StopsService.h */,
+				95555B491936779F00EB4608 /* StopsService.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -300,7 +300,7 @@
 			files = (
 				95555B501936978000EB4608 /* Stop.m in Sources */,
 				95205E081936FEB900876FF7 /* StopDetailTableViewController.m in Sources */,
-				95555B4A1936779F00EB4608 /* StopsMap.m in Sources */,
+				95555B4A1936779F00EB4608 /* StopsService.m in Sources */,
 				95555B2A193676D300EB4608 /* MapStopMainViewController.m in Sources */,
 				95555B24193676D300EB4608 /* AppDelegate.m in Sources */,
 				95555B20193676D300EB4608 /* main.m in Sources */,
