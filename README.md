@@ -230,7 +230,7 @@
 <p class="p13">MSTPStopsService.h</p>
 <p class="p15"><br></p>
 <p class="p15"><br></p>
-</h2>MSTPStopDetailTableViewController Class Reference</h2>
+<h2>MSTPStopDetailTableViewController Class Reference</h2>
 <table cellspacing="0" cellpadding="0" class="t1">
   <tbody>
     <tr>
