@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>MapStop</h1>
-<p>MapStop is a simple demo/portfolio app that displays a set of bus stops in the Chicago area.  Coded in response to a code challenge, I used good OO and iOS design patterns such as delegation , created a clean separation of view/view controller responsibilties from those of the network interaction and model.</p>
+<p>MapStop is a simple demo/portfolio app that displays a set of bus stops in the Chicago area.  Coded in response to a code challenge, I used good OO and iOS design patterns and created a clean separation of view and view controller responsibilties from those of the network interaction and model.</p>
 <p>Primary Frameworks, Classes, and Protocols Utilized:<br>
 <ul>
 <li>Foundation (NSArray, NSDictionary, NSURLSession, NSURLSessionConfiguration, NSURLSessionDataTask, NSURLSessionDataDelegate)</li>
@@ -29,26 +29,26 @@
 </p>
 <p>The class reference documentation below describes those responsibilities along with the APIs that facilitate interaction between the classes that make up the app.</p>
 <p><br></p>
-<p class="p1">MapStop Hierarchy</p>
+<h2>MapStop Hierarchy</h2>
 <p class="p2">Class Hierarchy</p>
 <ul class="ul1">
   <li class="li3">NSObject</li>
   <ul class="ul1">
-    <li class="li4"><a href="file:///Users/Dennis/Library/Developer/Shared/Documentation/DocSets/com.appivot.mapstop.MapStop.docset/Contents/Resources/Documents/Classes/MSTPStop.html">MSTPStop</a></li>
-    <li class="li4"><a href="file:///Users/Dennis/Library/Developer/Shared/Documentation/DocSets/com.appivot.mapstop.MapStop.docset/Contents/Resources/Documents/Classes/MSTPStopsService.html">MSTPStopsService</a></li>
+    <li class="li4">MSTPStop</li>
+    <li class="li4">MSTPStopsService</li>
   </ul>
   <li class="li3">UITableViewController</li>
   <ul class="ul1">
-    <li class="li4"><a href="file:///Users/Dennis/Library/Developer/Shared/Documentation/DocSets/com.appivot.mapstop.MapStop.docset/Contents/Resources/Documents/Classes/MSTPStopDetailTableViewController.html">MSTPStopDetailTableViewController</a></li>
+    <li class="li4">MSTPStopDetailTableViewController</li>
   </ul>
   <li class="li3">UIViewController</li>
   <ul class="ul1">
-    <li class="li4"><a href="file:///Users/Dennis/Library/Developer/Shared/Documentation/DocSets/com.appivot.mapstop.MapStop.docset/Contents/Resources/Documents/Classes/MSTPMapStopMainViewController.html">MSTPMapStopMainViewController</a></li>
+    <li class="li4">MSTPMapStopMainViewController</li>
   </ul>
 </ul>
 <p class="p5"><br></p>
 <p class="p5"><br></p>
-<p class="p1">MSTPStop Class Reference</p>
+<h2>MSTPStop Class Reference</h2>
 <table cellspacing="0" cellpadding="0" class="t1">
   <tbody>
     <tr>
@@ -70,7 +70,7 @@
     </tr>
   </tbody>
 </table>
-<p class="p7">Tasks</p>
+<h3>Tasks</h3>
 <ul class="ul1">
   <li class="li8">  name<span class="s1"> </span><span class="s2">property</span></li>
   <li class="li8">  stopID<span class="s1"> </span><span class="s2">property</span></li>
@@ -82,7 +82,7 @@
   <li class="li8">– initWithLatitude:andLongitude:</li>
   <li class="li8">– fetchAddressWithCompletionHandler:</li>
 </ul>
-<p class="p7">Properties</p>
+<h3>Properties</h3>
 <p class="p9">coordinate</p>
 <p class="p10">The geographical coordinate of this stop.</p>
 <p class="p11">@property (assign, readonly, nonatomic) CLLocationCoordinate2D coordinate</p>
@@ -159,7 +159,7 @@
 <p class="p13">MSTPStop.h</p>
 <p class="p15"><br></p>
 <p class="p15"><br></p>
-<p class="p1">MSTPStopsService Class Reference</p>
+<h2>MSTPStopsService Class Reference</h2>
 <table cellspacing="0" cellpadding="0" class="t1">
   <tbody>
     <tr>
@@ -181,14 +181,14 @@
     </tr>
   </tbody>
 </table>
-<p class="p7">Tasks</p>
+<h3>Tasks</h3>
 <ul class="ul1">
   <li class="li8">  delegate<span class="s1"> </span><span class="s2">property</span></li>
   <li class="li8">– startPullOfStopSet:</li>
   <li class="li8">– numberOfStopsInMap</li>
   <li class="li8">– stopForStopAtIndex:</li>
 </ul>
-<p class="p7">Properties</p>
+</h3>Properties</h3>
 <p class="p9">delegate</p>
 <p class="p10">The delegate object to receive callbacks defined in the <a href="file:///Users/Dennis/Library/Developer/Shared/Documentation/DocSets/com.appivot.mapstop.MapStop.docset/Contents/Resources/Documents/Protocols/StopsServiceDelegate.html"><span class="s3">StopsServiceDelegate</span></a> protocol</p>
 <p class="p11">@property (weak, nonatomic) id&lt;StopsServiceDelegate&gt; delegate</p>
@@ -230,7 +230,7 @@
 <p class="p13">MSTPStopsService.h</p>
 <p class="p15"><br></p>
 <p class="p15"><br></p>
-<p class="p1">MSTPStopDetailTableViewController Class Reference</p>
+</h2>MSTPStopDetailTableViewController Class Reference</h2>
 <table cellspacing="0" cellpadding="0" class="t1">
   <tbody>
     <tr>
@@ -252,13 +252,13 @@
     </tr>
   </tbody>
 </table>
-<p class="p7">Overview</p>
+<h3>Overview</h3>
 <p class="p16">A view controller that facilitates the population of a view hierarchy displaying detailed transit authority stop information based on a populated Stop object passed in using the <span class="s3">selectedStop</span> property.</p>
 <p class="p7">Tasks</p>
 <ul class="ul1">
   <li class="li8">  selectedStop<span class="s1"> </span><span class="s2">property</span></li>
 </ul>
-<p class="p7">Properties</p>
+<h3>Properties</h3>
 <p class="p9">selectedStop</p>
 <p class="p10">The stop object containing the detailed information to be displayed.</p>
 <p class="p11">@property (strong, nonatomic) MSTPStop *selectedStop</p>
@@ -268,7 +268,7 @@
 <p class="p13">MSTPStopDetailTableViewController.h</p>
 <p class="p15"><br></p>
 <p class="p15"><br></p>
-<p class="p1">MSTPMapStopMainViewController Class Reference</p>
+<h2>MSTPMapStopMainViewController Class Reference</h2>
 <table cellspacing="0" cellpadding="0" class="t1">
   <tbody>
     <tr>
@@ -290,7 +290,7 @@
     </tr>
   </tbody>
 </table>
-<p class="p7">Overview</p>
+<h3>Overview</h3>
 <p class="p16">A view controller that facilitates the population of a map view with transit authority stop information. It creates the MKPointAnnotations by querying a StopsService object. This object gathers stop information and provides an API that facilitates access to the individual Stop model objects.</p>
 </body>
 </html>
