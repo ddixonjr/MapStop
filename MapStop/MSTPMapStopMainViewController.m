@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Appivot LLC. All rights reserved.
 //
 
-#import "MapStopMainViewController.h"
-#import "StopsService.h"
-#import "StopDetailTableViewController.h"
+#import "MSTPMapStopMainViewController.h"
+#import "MSTPStopsService.h"
+#import "MSTPStopDetailTableViewController.h"
 #import <MapKit/MapKit.h>
-#import "AppDelegate.h"
+#import "MSTPAppDelegate.h"
 
 #define kDefaultCity @"Chicago, IL"
 #define kDefaultCoordinateSpanLat 0.4
@@ -22,9 +22,9 @@
 #define kAlertViewIndexTryLater 1
 
 
-@interface MapStopMainViewController () <MKMapViewDelegate,StopsServiceDelegate,UIAlertViewDelegate>
+@interface MSTPMapStopMainViewController () <MKMapViewDelegate,StopsServiceDelegate,UIAlertViewDelegate>
 
-@property (strong, nonatomic) StopsService *stopsService;
+@property (strong, nonatomic) MSTPStopsService *stopsService;
 @property (weak, nonatomic) IBOutlet MKMapView *stopsMapView;
 @property (strong, nonatomic) NSMutableArray *stopAnnotationsArray;
 
@@ -32,7 +32,7 @@
 
 
 
-@implementation MapStopMainViewController
+@implementation MSTPMapStopMainViewController
 
 - (void)viewDidLoad
 {
@@ -81,7 +81,7 @@
 
 #pragma mark  - StopsServiceDelegate Methods
 
-- (void)stopsService:(StopsService *)stopsService didPullStopsWithError:(NSError *)error
+- (void)stopsService:(MSTPStopsService *)stopsService didPullStopsWithError:(NSError *)error
 {
     if (!error)
     {
@@ -101,7 +101,7 @@
 - (void)setupVC
 {
     self.stopsMapView.delegate = self;
-    self.stopsService = [[StopsService alloc] init];
+    self.stopsService = [[MSTPStopsService alloc] init];
     self.stopsService.delegate = self;
     [self.stopsService startPullOfStopSet:nil];
 }
@@ -115,7 +115,7 @@
     for (NSInteger curStopIndex=0; curStopIndex<numberOfStops; curStopIndex++)
     {
         MKPointAnnotation *curStopPointAnnotation = [[MKPointAnnotation alloc] init];
-        Stop *curStop = [self.stopsService stopForStopAtIndex:curStopIndex];
+        MSTPStop *curStop = [self.stopsService stopForStopAtIndex:curStopIndex];
         curStopPointAnnotation.title = curStop.name;
         curStopPointAnnotation.coordinate = curStop.coordinate;
         curStopPointAnnotation.subtitle = curStop.routes;
@@ -150,7 +150,7 @@
         if ([sender isKindOfClass:[MKPinAnnotationView class]])
         {
             MKPinAnnotationView *stopPinAnnotationView = (MKPinAnnotationView *) sender;
-            StopDetailTableViewController *stopDetailVC = segue.destinationViewController;
+            MSTPStopDetailTableViewController *stopDetailVC = segue.destinationViewController;
             stopDetailVC.selectedStop = [self.stopsService stopForStopAtIndex:stopPinAnnotationView.tag];
         }
     }

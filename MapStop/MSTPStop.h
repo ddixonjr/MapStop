@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
-@interface Stop : NSObject
+@interface MSTPStop : NSObject
 
 /**
  *  The name of the transit stop.

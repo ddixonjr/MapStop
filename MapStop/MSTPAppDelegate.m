@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Appivot LLC. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "MSTPAppDelegate.h"
 
 
-@implementation AppDelegate
+@implementation MSTPAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

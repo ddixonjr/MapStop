@@ -8,17 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
-#import "Stop.h"
+#import "MSTPStop.h"
 
-@class StopsService;
+@class MSTPStopsService;
 
 @protocol StopsServiceDelegate
 
-- (void)stopsService:(StopsService *)stopsService didPullStopsWithError:(NSError *)error;
+- (void)stopsService:(MSTPStopsService *)stopsService didPullStopsWithError:(NSError *)error;
 
 @end
 
-@interface StopsService : NSObject
+@interface MSTPStopsService : NSObject
 
 /**
  *  The delegate object to receive callbacks defined in the StopsServiceDelegate protocol
@@ -49,7 +49,7 @@
  *
  *  @return the Stop object corresponding to the specified index.
  */
-- (Stop *)stopForStopAtIndex:(NSInteger)stopIndex;
+- (MSTPStop *)stopForStopAtIndex:(NSInteger)stopIndex;
 
 
 

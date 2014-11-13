@@ -6,18 +6,18 @@
 //  Copyright (c) 2014 Appivot LLC. All rights reserved.
 //
 
-#import "Stop.h"
+#import "MSTPStop.h"
 #import <AddressBookUI/AddressBookUI.h>
 
 
-@interface Stop ()
+@interface MSTPStop ()
 
 @property (assign, nonatomic) CLLocationCoordinate2D coordinate;
 
 @end
 
 
-@implementation Stop
+@implementation MSTPStop
 
 
 - (id)init

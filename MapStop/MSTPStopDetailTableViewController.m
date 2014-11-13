@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Appivot LLC. All rights reserved.
 //
 
-#import "StopDetailTableViewController.h"
+#import "MSTPStopDetailTableViewController.h"
 
 #define kDebugOn NO
 #define kDefaultCoordinateSpanLat 0.01
 #define kDefaultCoordinateSpanLon 0.01
 #define kErrorAddressNotFoundString @"Unable to determine address"
 
-@interface StopDetailTableViewController () <MKMapViewDelegate>
+@interface MSTPStopDetailTableViewController () <MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *stopNameCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *stopAddressCell;
@@ -24,7 +24,7 @@
 
 @end
 
-@implementation StopDetailTableViewController
+@implementation MSTPStopDetailTableViewController
 
 #pragma mark - View Life Cycle and Initializaton Methods
 

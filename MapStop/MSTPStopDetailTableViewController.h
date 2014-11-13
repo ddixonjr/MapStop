@@ -8,16 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "StopsService.h"
+#import "MSTPStopsService.h"
 
 /**
  *  A view controller that facilitates the population of a view hierarchy displaying detailed transit authority stop information based on a populated Stop object passed in using the selectedStop property.
  */
-@interface StopDetailTableViewController : UITableViewController
+@interface MSTPStopDetailTableViewController : UITableViewController
 
 /**
  *  The stop object containing the detailed information to be displayed.
  */
-@property (strong, nonatomic) Stop *selectedStop;
+@property (strong, nonatomic) MSTPStop *selectedStop;
 
 @end

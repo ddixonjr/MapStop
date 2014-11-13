@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Appivot LLC. All rights reserved.
 //
 
-#import "StopsService.h"
-#import "Stop.h"
+#import "MSTPStopsService.h"
+#import "MSTPStop.h"
 
 #define kDefaultStopSetURLString @"https://s3.amazonaws.com/mobile-makers-lib/bus.json"
 #define kDebugOn NO
@@ -23,14 +23,14 @@
 #define kJSONKeyStopsArray @"row"
 
 
-@interface StopsService () <NSURLSessionDelegate, NSURLSessionDataDelegate>
+@interface MSTPStopsService () <NSURLSessionDelegate, NSURLSessionDataDelegate>
 
 @property (strong, nonatomic) NSMutableArray *stopSetArray;
 
 @end
 
 
-@implementation StopsService
+@implementation MSTPStopsService
 
 #pragma mark - Public Methods (StopsService API)
 
@@ -40,7 +40,7 @@
 }
 
 
-- (Stop *)stopForStopAtIndex:(NSInteger)stopIndex
+- (MSTPStop *)stopForStopAtIndex:(NSInteger)stopIndex
 {
     return [self.stopSetArray objectAtIndex:stopIndex];
 }
@@ -110,7 +110,7 @@
 {
     for (NSDictionary *curStopDictionary in rawStopSetArray)
     {
-        Stop *curStop = [[Stop alloc] initWithLatitude:[[curStopDictionary objectForKey:@"latitude"] doubleValue]
+        MSTPStop *curStop = [[MSTPStop alloc] initWithLatitude:[[curStopDictionary objectForKey:@"latitude"] doubleValue]
                                           andLongitude:[[curStopDictionary objectForKey:@"longitude"] doubleValue]];
         // load everything static but derive address from the latitude and longitude in the API method only when called
         curStop.name = [curStopDictionary objectForKey:kJSONKeyStopName];
