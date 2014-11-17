@@ -17,14 +17,15 @@
 </p>
 <p>Primary Design Patterns, Coding Techniques, and iOS Capabilities Utilized:<br>
 <ul>
-<li>Delegation & Obj-C Protocols (Apple/GoF and Custom Application)</li>
-<li>MVC (Apple and Custom Application)</li>
-<li>Target-Action (Apple)</li>
-<li>Composite (Apple)</li>
-<li>ResponderChain/Chain of Responsibility (Apple)</li>
-<li>Factory Method (Apple)</li>
+<li>MVC</li>
+<li>Target-Action</li>
+<li>Composite</li>
+<li>Facade</li>
+<li>ResponderChain/Chain of Responsibility</li>
+<li>Factory Method</li>
+<li>Delegation & Obj-C Protocols</li>
 <li>Basic GCD (dispatch_async(), dispatch_get_main_queue())</li>
-<li>Obj-C Blocks (Apple and Custom Application)</li>
+<li>Obj-C Blocks</li>
 </ul>
 </p>
 <p>The class reference documentation below describes those responsibilities along with the APIs that facilitate interaction between the classes that make up the app.</p>
