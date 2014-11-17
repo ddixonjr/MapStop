@@ -88,24 +88,6 @@
 }
 
 
-- (void)pullStopSet:(NSString *)stopSetURLString
-{
-    NSURL *stopSetURL = [NSURL URLWithString:stopSetURLString];
-    NSData *stopSetData = [NSData dataWithContentsOfURL:stopSetURL];
-
-    NSError *error = [[NSError alloc] init];
-
-    if (stopSetData)
-    {
-        //  Deliberately not setting properties so I can extract the data I need into the stop objects and drop the rest
-        NSDictionary *stopSetDictionary = [NSJSONSerialization JSONObjectWithData:stopSetData options:NSJSONReadingAllowFragments  error:&error];
-        NSArray *rawStopSetArray = [stopSetDictionary objectForKey:@"row"];
-        [self buildStopSetModelFromRawStopSetArray:rawStopSetArray];
-        if (kDebugOn) NSLog(@"stopSetArray has the following %@",self.stopSetArray);
-    }
-}
-
-
 - (void)buildStopSetModelFromRawStopSetArray:(NSArray *)rawStopSetArray
 {
     for (NSDictionary *curStopDictionary in rawStopSetArray)

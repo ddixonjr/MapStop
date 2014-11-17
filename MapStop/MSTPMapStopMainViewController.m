@@ -9,7 +9,8 @@
 #import "MSTPMapStopMainViewController.h"
 #import "MSTPStopsService.h"
 #import "MSTPStopDetailTableViewController.h"
-#import <MapKit/MapKit.h>
+
+
 #import "MSTPAppDelegate.h"
 
 #define kDefaultCity @"Chicago, IL"

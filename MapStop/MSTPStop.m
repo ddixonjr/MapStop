@@ -53,7 +53,9 @@
             {
                 CLPlacemark *firstPlacemark = [placemarks firstObject];
                 NSString *address = ABCreateStringWithAddressDictionary(firstPlacemark.addressDictionary, NO);
-                completion(address,nil);
+                dispatch_async(dispatch_get_main_queue(),^{
+                    completion(address,nil);
+                });
             }
             else
             {
